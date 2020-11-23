@@ -63,21 +63,44 @@ function rpsFrontEnd(h,r,b){
 }
 //challenge 4
 var all_buttons = document.getElementsByTagName('button');
-var copyAllbuttons = [];
-for(let i = 0 ; i<all_buttons.length;i++){
-	copyAllbuttons.push(all_buttons[i]);
-}
+var copyAllbuttons = ['btn-primary', 'btn-danger' , 'btn-success' , 'btn-primary' , 'btn-warning' , 'btn-danger' , 'btn-success'];
 function buttonColorChange(buttonThingy){
 	if(buttonThingy.value == 'red'){
 		buttonsRed();
 	}
-	if(buttonThingy.value == 'green'){
+	else if(buttonThingy.value == 'green'){
 		buttonsGreen();
 	}
-	if(buttonThingy.value == 'reset'){
+	else if(buttonThingy.value == 'reset'){
 		buttonsReset();
 	}
-	if(buttonThingy.value == 'random'){
+	else if(buttonThingy.value == 'random'){
 		buttonsRandom();
+	}
+}
+function buttonsRed(){
+	for(let i = 0 ; i<all_buttons.length ; i++){
+		all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+		all_buttons[i].classList.add('btn-danger');
+	}
+}
+function buttonsGreen(){
+	for(let i = 0 ; i<all_buttons.length ; i++){
+		all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+		all_buttons[i].classList.add('btn-success');
+	}
+}
+function buttonsReset(){
+	//var cur_buttons = document.getElementsByTagName('button');
+	for(let i = 0 ; i<all_buttons.length ; i++){
+		all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+		all_buttons[i].classList.add(copyAllbuttons[i]);
+	}
+}
+function buttonsRandom(){
+	for(let i = 0 ; i<all_buttons.length ; i++){
+		var r = Math.floor(Math.random() * all_buttons.length);
+		all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+		all_buttons[i].classList.add(copyAllbuttons[r]);
 	}
 }
